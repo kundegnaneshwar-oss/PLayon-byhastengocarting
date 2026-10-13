@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Booking Request Received | Play On{% endblock %}
+{% block content %}
+<section class="success-section section">
+  <div class="success-mark">✓</div><div class="section-label">REQUEST RECEIVED</div><h1>YOU’RE ON<br><span>THE GRID.</span></h1>
+  <p>Your booking request number is <strong>#{{ booking_id }}</strong>. This is a request, not a confirmed reservation. The team must confirm availability and price.</p>
+  <div class="success-details"><div><span>NAME</span><strong>{{ booking.full_name }}</strong></div><div><span>DATE</span><strong>{{ booking.booking_date }}</strong></div><div><span>SESSION</span><strong>{{ booking.package }}</strong></div><div><span>TIME</span><strong>{{ booking.time_slot }}</strong></div></div>
+  <p class="fine-print">Payment is not processed by this starter website. Please wait for official payment instructions and never pay an unverified account.</p>
+  <a class="btn btn-red" href="{{ url_for('home') }}">BACK TO PLAY ON ↗</a>
+</section>
+{% endblock %}

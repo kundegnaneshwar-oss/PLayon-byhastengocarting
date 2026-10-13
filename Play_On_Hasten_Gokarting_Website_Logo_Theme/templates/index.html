@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow"><span class="live-dot"></span> YOUR NEXT RACE STARTS HERE</div>
+    <h1>FIND YOUR<br><span>RACING LINE.</span></h1>
+    <p>Throttle up. Chase the apex. Make every lap count at Play On – By Hasten Gokarting.</p>
+    <div class="hero-actions"><a class="btn btn-red" href="#booking">BOOK YOUR RACE <b>↗</b></a><a class="text-link" href="#experience">DISCOVER THE EXPERIENCE <span>↓</span></a></div>
+    <div class="hero-stats"><div><strong>01</strong><span>YOUR TRACK</span></div><i></i><div><strong>∞</strong><span>GOOD TIMES</span></div><i></i><div><strong>100%</strong><span>RACE MODE</span></div></div>
+  </div>
+  <div class="hero-side">PLAY HARD. RACE SMART.</div>
+  <div class="hero-bottom"><span>GURRAM GUDA · HYDERABAD</span><span>01 / THE EXPERIENCE</span></div>
+</section>
+
+<section class="intro section" id="experience">
+  <div class="section-label">01 / THE EXPERIENCE</div>
+  <div class="intro-grid"><h2>MORE THAN A<br>RIDE. IT’S A <span>RUSH.</span></h2><div><p class="lead">Bring your people. Pick your line. Let the track do the talking.</p><p>Whether it’s a friendly face-off, a family outing or a special celebration, your next Play On moment is waiting.</p><a class="under-link" href="#booking">GET ON THE GRID <span>↗</span></a></div></div>
+  <div class="feature-strip"><div><span class="feature-number">01</span><h3>CHASE THE APEX</h3><p>Get into race mode and enjoy every turn.</p></div><div><span class="feature-number">02</span><h3>BRING YOUR CREW</h3><p>Make it a friendly rivalry worth remembering.</p></div><div><span class="feature-number">03</span><h3>MAKE IT YOURS</h3><p>Plan a visit, a celebration or a day out.</p></div></div>
+</section>
+
+<section class="packages section" id="packages">
+  <div class="section-label">02 / CHOOSE YOUR SESSION</div>
+  <div class="section-heading"><h2>PICK YOUR <span>PACE.</span></h2><p>Choose a session to request a booking. Final availability and price are confirmed by the team.</p></div>
+  <div class="package-grid">
+    <article class="package-card"><div class="package-top"><span>01 / SOLO</span><span class="package-icon">↗</span></div><h3>HOT LAP</h3><p>A quick hit of track time for your next adrenaline fix.</p><div class="package-price">PRICE <strong>On request</strong></div><a href="#booking" data-package="Hot Lap" class="package-link">SELECT SESSION <span>↗</span></a></article>
+    <article class="package-card featured"><div class="popular">CREW FAVOURITE</div><div class="package-top"><span>02 / FRIENDS</span><span class="package-icon">✳</span></div><h3>RACE CREW</h3><p>Bring your friends and see who takes the bragging rights.</p><div class="package-price">PRICE <strong>On request</strong></div><a href="#booking" data-package="Race Crew" class="package-link">SELECT SESSION <span>↗</span></a></article>
+    <article class="package-card"><div class="package-top"><span>03 / OCCASION</span><span class="package-icon">★</span></div><h3>PRIVATE EVENT</h3><p>Make birthdays, group days and team outings memorable.</p><div class="package-price">PRICE <strong>Custom quote</strong></div><a href="#booking" data-package="Private Event" class="package-link">ENQUIRE NOW <span>↗</span></a></article>
+  </div>
+  <p class="fine-print">Session durations, prices, age/height requirements and final availability are placeholders until confirmed by the business.</p>
+</section>
+
+<section class="booking-section section" id="booking">
+  <div class="section-label">03 / RESERVE YOUR RACE</div>
+  <div class="booking-grid"><div class="booking-copy"><h2>READY.<br>SET.<br><span>PLAY ON.</span></h2><p>Send a booking request and the team can confirm your slot, session details and payment instructions.</p><div class="booking-note"><span>↗</span><div><strong>YOUR REQUEST, YOUR RACE</strong><small>Submitting this form requests a booking; it does not guarantee a slot until confirmed.</small></div></div></div>
+  <form class="booking-form" method="post" action="{{ url_for('book') }}">
+    <div class="form-head"><h3>BOOKING REQUEST</h3><span>FIELDS MARKED * ARE REQUIRED</span></div>
+    <div class="form-row"><label>Full name *<input name="full_name" required maxlength="100" placeholder="Your name"></label><label>Phone number *<input name="phone" required maxlength="20" type="tel" placeholder="+91"></label></div>
+    <label>Email address *<input name="email" required maxlength="150" type="email" placeholder="you@example.com"></label>
+    <div class="form-row"><label>Preferred date *<input name="booking_date" required type="date" id="booking-date"></label><label>Preferred time *<select name="time_slot" required><option value="">Choose a time</option><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Flexible</option></select></label></div>
+    <div class="form-row"><label>Session *<select name="package" id="package-select" required><option value="">Choose a session</option><option>Hot Lap</option><option>Race Crew</option><option>Private Event</option></select></label><label>Participants *<input name="participants" required type="number" min="1" max="20" value="1"></label></div>
+    <label>Anything we should know? <textarea name="notes" rows="3" maxlength="1000" placeholder="Celebration, group details, questions…"></textarea></label>
+    <button class="btn btn-red submit-btn" type="submit">SEND BOOKING REQUEST <b>↗</b></button>
+    <small class="form-disclaimer">No online payment is collected on this demo-ready starter. Wait for confirmation before travelling or paying.</small>
+  </form></div>
+</section>
+
+<section class="location section" id="location">
+  <div class="section-label">04 / FIND THE TRACK</div><div class="location-grid"><div><h2>MEET US AT<br><span>THE START LINE.</span></h2><p class="address">SyNo. 144, 1, Gurramguda Road, Sri Laxmi Nagar, Teachers Colony, Rajyalaxmi Nagar-2, Gurram Guda, Hyderabad, Telangana 501510</p><a class="btn btn-outline" href="{{ maps_url }}" target="_blank" rel="noopener">GET DIRECTIONS <b>↗</b></a></div><div class="map-card"><div class="map-cross">+</div><div class="map-pin">●</div><div class="map-label"><strong>PLAY ON</strong><span>GURRAM GUDA · HYDERABAD</span></div><a href="{{ maps_url }}" target="_blank" rel="noopener">OPEN IN GOOGLE MAPS ↗</a></div></div>
+  <div class="contact-line"><div><span>CALL THE TEAM</span><strong>{{ business_phone }}</strong></div><div><span>EMAIL</span><strong>{{ business_email }}</strong></div><div><span>BOOKING STATUS</span><strong>Confirm with our team</strong></div></div>
+</section>
+<script>
+  const dateInput = document.getElementById('booking-date');
+  if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+  document.querySelectorAll('[data-package]').forEach(link => link.addEventListener('click', () => {
+    const select = document.getElementById('package-select');
+    if (select) select.value = link.dataset.package;
+  }));
+</script>
+{% endblock %}

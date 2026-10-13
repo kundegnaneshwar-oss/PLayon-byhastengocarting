@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Admin Login | Play On{% endblock %}
+{% block content %}
+<section class="admin-login section"><div class="section-label">RESTRICTED ACCESS</div><h1>TEAM <span>LOGIN.</span></h1><p>Sign in to manage booking requests.</p>
+<form method="post" class="booking-form login-form"><label>Username<input name="username" required autocomplete="username"></label><label>Password<input type="password" name="password" required autocomplete="current-password"></label><button class="btn btn-red submit-btn" type="submit">SIGN IN ↗</button></form>
+<p class="fine-print">Admin credentials must be configured as hosting environment variables before launch.</p></section>
+{% endblock %}

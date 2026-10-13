@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Bookings Dashboard | Play On{% endblock %}
+{% block content %}
+<section class="admin-page section">
+  <div class="admin-head"><div><div class="section-label">PLAY ON / OPERATIONS</div><h1>BOOKING <span>CONTROL.</span></h1></div><form method="post" action="{{ url_for('admin_logout') }}"><button class="btn btn-outline" type="submit">LOG OUT ↗</button></form></div>
+  <div class="admin-stats"><div><span>TOTAL REQUESTS</span><strong>{{ total }}</strong></div><div><span>PENDING</span><strong>{{ pending }}</strong></div><div><span>CONFIRMED</span><strong>{{ confirmed }}</strong></div></div>
+  <div class="filter-row"><strong>BOOKING REQUESTS</strong><div>{% for item in ['All','Pending','Confirmed','Cancelled'] %}<a class="{% if status_filter == item %}active{% endif %}" href="{{ url_for('admin_dashboard', status=item) }}">{{ item }}</a>{% endfor %}</div></div>
+  {% if bookings %}
+  <div class="table-wrap"><table><thead><tr><th>ID / CREATED</th><th>GUEST</th><th>SESSION</th><th>DATE / TIME</th><th>PEOPLE</th><th>STATUS</th><th>UPDATE</th></tr></thead><tbody>
+  {% for b in bookings %}<tr><td><strong>#{{ b.id }}</strong><small>{{ b.created_at[:16].replace('T',' ') }}</small></td><td><strong>{{ b.full_name }}</strong><small>{{ b.phone }}</small><small>{{ b.email }}</small>{% if b.notes %}<small>Note: {{ b.notes }}</small>{% endif %}</td><td>{{ b.package }}</td><td>{{ b.booking_date }}<small>{{ b.time_slot }}</small></td><td>{{ b.participants }}</td><td><span class="status status-{{ b.status|lower }}">{{ b.status }}</span></td><td><form class="status-form" method="post" action="{{ url_for('update_status', booking_id=b.id) }}"><select name="status" aria-label="Update booking status"><option {% if b.status=='Pending' %}selected{% endif %}>Pending</option><option {% if b.status=='Confirmed' %}selected{% endif %}>Confirmed</option><option {% if b.status=='Cancelled' %}selected{% endif %}>Cancelled</option></select><button type="submit">SAVE</button></form></td></tr>{% endfor %}
+  </tbody></table></div>
+  {% else %}<div class="empty-state"><strong>No booking requests here yet.</strong><p>New requests submitted on the website will appear on this dashboard.</p></div>{% endif %}
+</section>
+{% endblock %}
